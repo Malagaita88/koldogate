@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="KoldoGate Archives - Documentación del caso de corrupción COVID-19. Archivo investigativo con timeline interactivo, fuentes primarias oficiales y mapa de conexiones.">
+    <meta name="keywords" content="Caso Koldo, Koldo García, José Luis Ábalos, corrupción COVID, mascarillas, España">
+    <meta name="author" content="KoldoGate Archives">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="KoldoGate Archives - Documentación del Caso Koldo">
+    <meta property="og:description" content="Archivo investigativo sobre el caso de corrupción COVID-19 en España">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>KoldoGate Archives | Documentación del Caso Koldo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="alternate" type="application/rss+xml" title="KoldoGate Archives RSS" href="rss.xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <!-- Disclaimer Modal -->
+    <div id="disclaimer-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="classified-stamp">CLASIFICADO</span>
+                <h2>AVISO LEGAL</h2>
+            </div>
+            <div class="modal-body">
+                <p><strong>Este sitio recopila información de dominio público y fuentes oficiales.</strong></p>
+                <ul>
+                    <li>Toda la información proviene de fuentes públicas: BOE, sentencias judiciales, declaraciones parlamentarias oficiales.</li>
+                    <li>No se reproduce contenido de medios privados protegidos por copyright.</li>
+                    <li>Los implicados son presuntos inocentes hasta sentencia firme.</li>
+                    <li>Este archivo tiene fines informativos y de transparencia democrática.</li>
+                    <li>Se respetan los derechos fundamentales y la presunción de inocencia.</li>
+                </ul>
+                <p class="modal-footer-text">Al continuar, usted declara comprender estos términos.</p>
+            </div>
+            <div class="modal-footer">
+                <button id="accept-disclaimer" class="btn-primary">ACEPTAR Y CONTINUAR</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="nav-logo">[KGA]</span>
+            <span class="nav-title">KoldoGate Archives</span>
+        </div>
+        <div class="nav-search">
+            <input type="text" id="search-input" placeholder="Buscar en el archivo...">
+            <button id="search-btn">⌕</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#fuentes">Fuentes</a></li>
+            <li><a href="#actores">Actores</a></li>
+            <li><a href="#conexiones">Conexiones</a></li>
+        </ul>
+        <button class="nav-toggle" id="nav-toggle">☰</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="classified-watermark">DOCUMENTO CLASIFICADO</div>
+            <h1 class="glitch" data-text="KOLDGATE ARCHIVES">KOLDGATE ARCHIVES</h1>
+            <p class="hero-subtitle">Documentación del caso de corrupción COVID-19</p>
+            <div class="hero-meta">
+                <span class="meta-item">REF: ES-COVID-2020-2024</span>
+                <span class="meta-item">ESTADO: INVESTIGACIÓN EN CURSO</span>
+                <span class="meta-item">ÚLTIMA ACTUALIZACIÓN: 2025-02-17</span>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">€54M+</span>
+                    <span class="stat-label">En contratos investigados</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Implicados principales</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Años de investigación</span>
+                </div>
+            </div>
+        </div>
+        <div class="scan-line"></div>
+    </header>
+
+    <!-- Search Results -->
+    <section id="search-results" class="search-results hidden">
+        <div class="container">
+            <h2>Resultados de búsqueda</h2>
+            <div id="results-container"></div>
+            <button id="close-search" class="btn-secondary">Cerrar búsqueda</button>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="timeline-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">CRONOLOGÍA</span>
+                <h2>Timeline de Eventos</h2>
+                <p>Evolución del caso desde 2020 hasta la actualidad</p>
+            </div>
+            <div class="timeline-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="contrato">Contratos</button>
+                <button class="filter-btn" data-filter="judicial">Judicial</button>
+                <button class="filter-btn" data-filter="politico">Político</button>
+            </div>
+            <div class="timeline-container" id="timeline-container">
+                <!-- Timeline items will be loaded from data.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Fuentes Primarias Section -->
+    <section id="fuentes" class="fuentes-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">DOCUMENTACIÓN OFICIAL</span>
+                <h2>Fuentes Primarias</h2>
+                <p>Enlaces directos a documentos oficiales y fuentes públicas verificables</p>
+            </div>
+            <div class="fuentes-grid">
+                <div class="fuente-card">
+                    <div class="fuente-icon">📜</div>
+                    <h3>Boletín Oficial del Estado</h3>
+                    <p>Contratos públicos adjudicados relacionados con el caso</p>
+                    <ul class="fuente-links">
+                        <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2020-4208" target="_blank" rel="noopener">Real Decreto-ley 6/2020 (Medidas urgentes COVID)</a></li>
+                        <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2020-4212" target="_blank" rel="noopener">Real Decreto-ley 7/2020 (Contratos emergencia)</a></li>
+                        <li><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2020-3824" target="_blank" rel="noopener">Real Decreto-ley 8/2020 (Material sanitario)</a></li>
+                    </ul>
+                </div>
+                <div class="fuente-card">
+                    <div class="fuente-icon">⚖️</div>
+                    <h3>Sentencias Judiciales</h3>
+                    <p>Resoluciones judiciales oficiales del Tribunal Supremo y Audiencia Nacional</p>
+                    <ul class="fuente-links">
+                        <li><a href="https://www.poderjudicial.es/cgpj/es/Poder-Judicial/Tribunal-Supremo/" target="_blank" rel="noopener">Tribunal Supremo - Caso Koldo</a></li>
+                        <li><a href="https://www.audiencianacional.es/" target="_blank" rel="noopener">Audiencia Nacional - Operación Delorme</a></li>
+                        <li><a href="https://www.poderjudicial.es/search/index.jsp" target="_blank" rel="noopener">Buscador de Sentencias CGPJ</a></li>
+                    </ul>
+                </div>
+                <div class="fuente-card">
+                    <div class="fuente-icon">🏛️</div>
+                    <h3>Declaraciones Parlamentarias</h3>
+                    <p>Intervenciones oficiales en el Congreso de los Diputados</p>
+                    <ul class="fuente-links">
+                        <li><a href="https://www.congreso.es/" target="_blank" rel="noopener">Congreso de los Diputados</a></li>
+                        <li><a href="https://www.congreso.es/webtv" target="_blank" rel="noopener">Canal Parlamento - VOD</a></li>
+                        <li><a href="https://www.senado.es/" target="_blank" rel="noopener">Senado de España</a></li>
+                    </ul>
+                </div>
+                <div class="fuente-card">
+                    <div class="fuente-icon">📊</div>
+                    <h3>Informes Oficiales</h3>
+                    <p>Auditorías e informes de organismos públicos</p>
+                    <ul class="fuente-links">
+                        <li><a href="https://www.igae.hacienda.gob.es/" target="_blank" rel="noopener">IGAE - Intervención General</a></li>
+                        <li><a href="https://www.audienciacuentas.es/" target="_blank" rel="noopener">Audiencia de Cuentas</a></li>
+                        <li><a href="https://www.defensordelpueblo.es/" target="_blank" rel="noopener">Defensor del Pueblo</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Actores Section -->
+    <section id="actores" class="actores-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">PERSONAJES</span>
+                <h2>Actores Principales</h2>
+                <p>Principales implicados en la trama según investigaciones judiciales</p>
+            </div>
+            <div class="actores-grid" id="actores-container">
+                <!-- Actors will be loaded from data.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Conexiones Section -->
+    <section id="conexiones" class="conexiones-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">MAPA DE RELACIONES</span>
+                <h2>Red de Conexiones</h2>
+                <p>Visualización interactiva de relaciones entre empresas y políticos</p>
+            </div>
+            <div class="graph-controls">
+                <button class="graph-btn active" data-view="all">Todas</button>
+                <button class="graph-btn" data-view="politicos">Políticos</button>
+                <button class="graph-btn" data-view="empresas">Empresas</button>
+                <button class="graph-btn" data-view="intermediarios">Intermediarios</button>
+            </div>
+            <div class="graph-container" id="graph-container">
+                <svg id="connection-graph"></svg>
+            </div>
+            <div class="graph-legend">
+                <div class="legend-item">
+                    <span class="legend-color politico"></span>
+                    <span>Político</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color empresa"></span>
+                    <span>Empresa</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color intermediario"></span>
+                    <span>Intermediario</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color organismo"></span>
+                    <span>Organismo público</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="footer-logo">[KGA]</span>
+                    <p>KoldoGate Archives</p>
+                </div>
+                <div class="footer-links">
+                    <a href="rss.xml" target="_blank">RSS Feed</a>
+                    <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+                </div>
+                <div class="footer-legal">
+                    <p>Este sitio recopila información de <strong>dominio público</strong>.</p>
+                    <p>Todos los implicados son <strong>presuntos inocentes</strong> hasta sentencia firme.</p>
+                    <p>Fuentes: BOE, Poder Judicial, Congreso de los Diputados.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KoldoGate Archives | Archivo de transparencia democrática</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

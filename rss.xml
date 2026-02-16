@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>KoldoGate Archives</title>
+    <link>https://koldogate-archives.github.io</link>
+    <description>Archivo investigativo sobre el caso de corrupción COVID-19 en España. Documentación oficial, timeline interactivo y mapa de conexiones.</description>
+    <language>es</language>
+    <lastBuildDate>Mon, 17 Feb 2025 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://koldogate-archives.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+    
+    <image>
+        <url>https://koldogate-archives.github.io/favicon.ico</url>
+        <title>KoldoGate Archives</title>
+        <link>https://koldogate-archives.github.io</link>
+    </image>
+    
+    <item>
+        <title>Mensajes sobre reunión OMT-Air Europa y Gobierno de España</title>
+        <description><![CDATA[Conversaciones revelan propuesta de reunión privada entre José Luis Ábalos, Zurab Pololikashvili (OMT) y el presidente de República Dominicana, tras visita a Moncloa. Se menciona respuesta de 'Begoña y el presidente' a Zurab. Fuente archivada: archive.ph/xDokv.]]></description>
+        <link>https://koldogate-archives.github.io/#timeline</link>
+        <guid isPermaLink="false">kga-2021-04-18</guid>
+        <pubDate>Sun, 18 Apr 2021 00:00:00 GMT</pubDate>
+        <category>Investigación</category>
+    </item>
+    
+    <item>
+        <title>Descubierta foto de operación con oro venezolano</title>
+        <description><![CDATA[La UCO descubre en el ordenador de Víctor de Aldama una foto de la orden de compra-venta de 104 barras de oro por 68,5 millones de dólares del FONDEN venezolano. Esta evidencia conecta el caso Koldo con posibles operaciones de blanqueo internacional.]]></description>
+        <link>https://koldogate-archives.github.io/#timeline</link>
+        <guid isPermaLink="false">kga-2025-10-10</guid>
+        <pubDate>Fri, 10 Oct 2025 00:00:00 GMT</pubDate>
+        <category>Investigación</category>
+    </item>
+    
+    <item>
+        <title>Imputados Pardo de Vera y Herrero Lizano</title>
+        <description><![CDATA[La expresidenta de Adif Isabel Pardo de Vera y el exdirector general de Carreteras Francisco Javier Herrero Lizano declaran como imputados en la Audiencia Nacional. El juez les retira el pasaporte y prohíbe su salida de España.]]></description>
+        <link>https://koldogate-archives.github.io/#timeline</link>
+        <guid isPermaLink="false">kga-2025-07-21</guid>
+        <pubDate>Mon, 21 Jul 2025 00:00:00 GMT</pubDate>
+        <category>Judicial</category>
+    </item>
+    
+    <item>
+        <title>Santos Cerdán dimite tras informe de la UCO</title>
+        <description><![CDATA[El secretario de Organización del PSOE dimite tras conocerse el informe de la UCO que le vincula con la gestión de 620.000 euros en mordidas para Ábalos y Koldo García. Cerdán renuncia también a su escaño de diputado.]]></description>
+        <link>https://koldogate-archives.github.io/#timeline</link>
+        <guid isPermaLink="false">kga-2025-06-13</guid>
+        <pubDate>Fri, 13 Jun 2025 00:00:00 GMT</pubDate>
+        <category>Político</category>
+    </item>
+    
+    <item>
+        <title>La UCO registra la casa de Ábalos en Valencia</title>
+        <description><![CDATA[La Unidad Central Operativa realiza una batería de registros incluyendo la casa del exministro José Luis Ábalos en Valencia. La investigación se amplía a adjudicaciones de obra pública además de los contratos de mascarillas.]]></description>
+        <link>https://koldogate-archives.github.io/#timeline</link>
+        <guid isPermaLink="false">kga-2025-06-12</guid>
+        <pubDate>Thu, 12 Jun 2025 00:00:00 GMT</pubDate>
+        <category>Judicial</category>
+    </item>
+    
+    <item>
+        <title>Informe UCO: Santos Cerdán implicado en la trama</title>
+        <description><![CDATA[La UCO entrega un informe al Tribunal Supremo que sitúa al secretario de Organización del PSOE, Santos Cerdán, como presunto gestor de 620.000 euros en mordidas para José Luis Ábalos y Koldo García.]]></description>
+        <link>https://koldogate-archives.github.io/#timeline</link>
+        <guid isPermaLink="false">kga-2025-06-05</guid>
+        <pubDate>Thu, 05 Jun 2025 00:00:00 GMT</pubDate>
+        <category>Investigación</category>
+    </item>
+    
+    <item>
+        <title>Víctor de Aldama ingresa en prisión</title>
+        <description><![CDATA[El juez Santiago Pedraz de la Audiencia Nacional decreta el ingreso en prisión incondicional de Víctor de Aldama por su implicación en una presunta organización criminal dedicada al fraude del IVA de hidrocarburos de más de 180 millones de euros.]]></description>
+        <link>https://koldogate-archives.github.io/#timeline</link>
+        <guid isPermaLink="false">kga-2024-10-10</guid>
+        <pubDate>Thu, 10 Oct 2024 00:00:00 GMT</pubDate>
+        <category>Judicial</category>
+    </item>
+    
+    <item>
+        <title>Operación Delorme: Detenciones en el caso Koldo</title>
+        <description><![CDATA[La Guardia Civil detiene a Koldo García, Víctor de Aldama, Patricia Úriz (mujer de Koldo) y otros implicados en la trama. Se registra la casa de José Luis Ábalos en Madrid. La investigación se centra en 53 millones de euros en contratos irregulares.]]></description>
+        <link>https://koldogate-archives.github.io/#timeline</link>
+        <guid isPermaLink="false">kga-2024-02-20</guid>
+        <pubDate>Tue, 20 Feb 2024 00:00:00 GMT</pubDate>
+        <category>Judicial</category>
+    </item>
+    
+    <item>
+        <title>El Congreso investiga el caso Koldo</title>
+        <description><![CDATA[La presidenta del Congreso, Francina Armengol, se ve salpicada por el caso tras revelarse que su administración adjudicó 3,7 millones de euros en contratos. El PP pide su dimisión aunque por el momento no hay vinculación personal directa.]]></description>
+        <link>https://koldogate-archives.github.io/#timeline</link>
+        <guid isPermaLink="false">kga-2024-10-23</guid>
+        <pubDate>Wed, 23 Oct 2024 00:00:00 GMT</pubDate>
+        <category>Político</category>
+    </item>
+    
+</channel>
+</rss>
