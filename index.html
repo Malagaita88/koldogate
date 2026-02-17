@@ -69,7 +69,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="classified-watermark">DOCUMENTO CLASIFICADO</div>
-            <h1 class="glitch" data-text="KOLDGATE ARCHIVES">KOLDGATE ARCHIVES</h1>
+            <h1 class="glitch" data-text="KOLDOGATE ARCHIVES">KOLDOGATE ARCHIVES</h1>
             <p class="hero-subtitle">Documentación del caso de corrupción COVID-19</p>
             <div class="hero-meta">
                 <span class="meta-item">REF: ES-COVID-2020-2024</span>
@@ -172,6 +172,14 @@
                         <li><a href="https://www.defensordelpueblo.es/" target="_blank" rel="noopener">Defensor del Pueblo</a></li>
                     </ul>
                 </div>
+                <div class="fuente-card">
+                    <div class="fuente-icon">📰</div>
+                    <h3>Archivos de Prensa</h3>
+                    <p>Investigaciones publicadas y páginas archivadas relevantes</p>
+                    <ul class="fuente-links">
+                        <li><a href="https://archive.ph/xDokv" target="_blank" rel="noopener">Investigación de EL ESPAÑOL (archivo)</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -199,10 +207,18 @@
                 <p>Visualización interactiva de relaciones entre empresas y políticos</p>
             </div>
             <div class="graph-controls">
-                <button class="graph-btn active" data-view="all">Todas</button>
-                <button class="graph-btn" data-view="politicos">Políticos</button>
-                <button class="graph-btn" data-view="empresas">Empresas</button>
-                <button class="graph-btn" data-view="intermediarios">Intermediarios</button>
+                <div class="graph-filters">
+                    <button class="graph-btn active" data-view="all">Todas</button>
+                    <button class="graph-btn" data-view="politicos">Políticos</button>
+                    <button class="graph-btn" data-view="empresas">Empresas</button>
+                    <button class="graph-btn" data-view="intermediarios">Intermediarios</button>
+                </div>
+                <div class="graph-zoom-controls">
+                    <button id="graph-zoom-out" class="graph-zoom-btn" type="button">-</button>
+                    <button id="graph-zoom-reset" class="graph-zoom-btn" type="button">·</button>
+                    <button id="graph-zoom-in" class="graph-zoom-btn" type="button">+</button>
+                    <button id="graph-fullscreen" class="graph-zoom-btn" type="button">⤢</button>
+                </div>
             </div>
             <div class="graph-container" id="graph-container">
                 <svg id="connection-graph"></svg>

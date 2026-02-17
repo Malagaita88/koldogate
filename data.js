@@ -385,12 +385,14 @@ const graphData = {
         { id: "puertos", name: "Puertos del Estado", group: "organismo", radius: 17 },
         { id: "renfe", name: "Renfe", group: "organismo", radius: 16 },
         { id: "ineco", name: "INECO", group: "organismo", radius: 15 },
+        { id: "transportes", name: "Ministerio de Transportes", group: "organismo", radius: 18 },
         { id: "acciona", name: "Acciona", group: "organismo", radius: 17 },
         { id: "azvi", name: "Grupo AZVI", group: "organismo", radius: 15 },
         { id: "lic", name: "LIC", group: "organismo", radius: 14 },
         { id: "opr", name: "OPR", group: "organismo", radius: 13 },
         { id: "servinabar", name: "Servinabar", group: "organismo", radius: 13 },
         { id: "noran", name: "Noran Coop", group: "organismo", radius: 12 },
+        { id: "carreteras", name: "Dirección Gral. de Carreteras", group: "organismo", radius: 16 },
         
         // Nuevos nodos (OMT/Air Europa/Zurab/Abinader)
         { id: "omt", name: "OMT (UNWTO)", group: "organismo", radius: 18 },

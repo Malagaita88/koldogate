@@ -36,6 +36,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 body {
@@ -43,7 +45,12 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
+    max-width: 100vw;
     overflow-x: hidden;
+}
+
+body.graph-fullscreen-open {
+    overflow: hidden;
 }
 
 a {
@@ -206,6 +213,8 @@ a:hover {
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 .nav-brand {
@@ -946,10 +955,16 @@ section {
 
 .graph-controls {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     gap: 1rem;
     margin-bottom: 2rem;
     flex-wrap: wrap;
+}
+
+.graph-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
 }
 
 .graph-btn {
@@ -974,9 +989,49 @@ section {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 4px;
-    height: 600px;
+    height: min(600px, 70vh);
     position: relative;
     overflow: hidden;
+}
+
+.graph-container.graph-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    z-index: 2000;
+}
+
+.graph-zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.graph-zoom-btn {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.graph-zoom-btn:hover {
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-color: var(--accent);
 }
 
 #connection-graph {
@@ -1145,6 +1200,24 @@ section {
     .navbar {
         flex-wrap: wrap;
         padding: 0.5rem 1rem;
+        justify-content: space-between;
+    }
+
+    .nav-brand {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .nav-logo {
+        font-size: 1rem;
+    }
+
+    .nav-title {
+        font-size: 0.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 55vw;
     }
 
     .nav-search {
@@ -1159,13 +1232,12 @@ section {
 
     .nav-links {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
+        position: static;
+        width: 100%;
+        margin-top: 0.5rem;
         background: var(--bg-secondary);
         flex-direction: column;
-        padding: 1rem;
+        padding: 0.75rem 0;
         border-bottom: 1px solid var(--border);
     }
 
@@ -1175,6 +1247,7 @@ section {
 
     .nav-toggle {
         display: block;
+        margin-left: 0.5rem;
     }
 
     .hero-meta {
@@ -1185,6 +1258,16 @@ section {
     .hero-stats {
         flex-direction: column;
         gap: 2rem;
+    }
+
+    .hero {
+        padding: 6rem 1.5rem 4rem;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .hero-content {
+        padding: 2rem 1.5rem;
     }
 
     .timeline-container::before {
@@ -1215,7 +1298,7 @@ section {
     }
 
     .graph-container {
-        height: 400px;
+        height: 360px;
     }
 
     .classified-watermark {
@@ -1230,6 +1313,23 @@ section {
 
     .hero-subtitle {
         font-size: 1rem;
+    }
+    
+    .classified-watermark {
+        font-size: 1.6rem;
+        letter-spacing: 4px;
+    }
+    
+    section {
+        padding: 3rem 0;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .nav-search {
+        display: none;
     }
 
     .timeline-filters,

@@ -239,7 +239,57 @@ function initGraph() {
     const width = container.clientWidth;
     const height = container.clientHeight;
     
-    svg.attr('width', width).attr('height', height);
+    svg
+        .attr('width', width)
+        .attr('height', height)
+        .attr('viewBox', `0 0 ${width} ${height}`);
+    
+    const root = svg.append('g')
+        .attr('class', 'zoom-layer');
+    
+    const zoom = d3.zoom()
+        .scaleExtent([0.6, 2.5])
+        .on('zoom', (event) => {
+            root.attr('transform', event.transform);
+        });
+    svg.call(zoom);
+
+    const zoomInBtn = document.getElementById('graph-zoom-in');
+    const zoomOutBtn = document.getElementById('graph-zoom-out');
+    const zoomResetBtn = document.getElementById('graph-zoom-reset');
+    const fullscreenBtn = document.getElementById('graph-fullscreen');
+
+    function zoomBy(factor) {
+        svg.transition().duration(200).call(zoom.scaleBy, factor);
+    }
+
+    function resetZoom() {
+        svg.transition().duration(200).call(zoom.transform, d3.zoomIdentity);
+    }
+
+    function toggleFullscreen() {
+        const isActive = container.classList.toggle('graph-fullscreen');
+        document.body.classList.toggle('graph-fullscreen-open', isActive);
+        setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+        }, 0);
+    }
+
+    if (zoomInBtn) {
+        zoomInBtn.addEventListener('click', () => zoomBy(1.2));
+    }
+
+    if (zoomOutBtn) {
+        zoomOutBtn.addEventListener('click', () => zoomBy(0.8));
+    }
+
+    if (zoomResetBtn) {
+        zoomResetBtn.addEventListener('click', () => resetZoom());
+    }
+
+    if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', () => toggleFullscreen());
+    }
     
     // Color scale
     const colorScale = {
@@ -258,15 +308,23 @@ function initGraph() {
     let nodes = [...graphData.nodes];
     let links = [...graphData.links];
     
-    // Create simulation
+    // Create simulation (softer and más compacta para pantallas pequeñas)
+    const isMobile = window.innerWidth <= 768;
+    const linkDistance = isMobile ? 70 : 95;
+    const chargeStrength = isMobile ? -180 : -260;
+    const centerX = width / 2;
+    const centerY = height / 2;
+
     const simulation = d3.forceSimulation(nodes)
-        .force('link', d3.forceLink(links).id(d => d.id).distance(100))
-        .force('charge', d3.forceManyBody().strength(-300))
-        .force('center', d3.forceCenter(width / 2, height / 2))
-        .force('collision', d3.forceCollide().radius(d => d.radius + 5));
+        .force('link', d3.forceLink(links).id(d => d.id).distance(linkDistance))
+        .force('charge', d3.forceManyBody().strength(chargeStrength))
+        .force('center', d3.forceCenter(centerX, centerY))
+        .force('collision', d3.forceCollide().radius(d => d.radius + (isMobile ? 3 : 6)))
+        .force('x', d3.forceX(centerX).strength(isMobile ? 0.04 : 0.06))
+        .force('y', d3.forceY(centerY).strength(isMobile ? 0.04 : 0.06));
     
     // Create links
-    const link = svg.append('g')
+    const link = root.append('g')
         .attr('class', 'links')
         .selectAll('line')
         .data(links)
@@ -276,7 +334,7 @@ function initGraph() {
         .attr('stroke-width', d => Math.sqrt(d.value));
     
     // Create nodes
-    const node = svg.append('g')
+    const node = root.append('g')
         .attr('class', 'nodes')
         .selectAll('g')
         .data(nodes)
@@ -358,9 +416,11 @@ function initGraph() {
     window.addEventListener('resize', () => {
         const newWidth = container.clientWidth;
         const newHeight = container.clientHeight;
-        svg.attr('width', newWidth).attr('height', newHeight);
+        svg.attr('width', newWidth).attr('height', newHeight).attr('viewBox', `0 0 ${newWidth} ${newHeight}`);
         simulation.force('center', d3.forceCenter(newWidth / 2, newHeight / 2));
-        simulation.alpha(0.3).restart();
+        simulation.force('x', d3.forceX(newWidth / 2).strength(isMobile ? 0.04 : 0.06));
+        simulation.force('y', d3.forceY(newHeight / 2).strength(isMobile ? 0.04 : 0.06));
+        simulation.alpha(0.4).restart();
     });
 }
 
